@@ -24,6 +24,7 @@ public class LocationHandler extends HandlerThread implements LocationCallback,H
     private Handler mHandler;
     private Runnable mRunnable;
     private Context mContext;
+    private boolean shouldObtainLocation;
 
     private static LocationHandler mLocationHandler=null;
     private LocationHandler(String name,Context context){
@@ -35,13 +36,20 @@ public class LocationHandler extends HandlerThread implements LocationCallback,H
             public void run() {
                 System.out.println("in run");
                 AwarenessClient.getInstance().detectLocation(LocationHandler.this);
-                if(LocationHandler.this.mHandler!=null)
-                    LocationHandler.this.mHandler.postDelayed(this,LocationHandler.TIMEOUT_DELAY);
+                if(LocationHandler.this.mHandler!=null && LocationHandler.this.shouldObtainLocation)
+                    LocationHandler.this.mHandler.postDelayed (this,LocationHandler.TIMEOUT_DELAY);
             }
         };
-        this.start();
+        this.shouldObtainLocation=true;
+
+        Log.d(TAG,"INSTANTIATED locationHandler");
 
     }
+    public void setShouldObtainLocation(boolean b){
+        this.shouldObtainLocation=b;
+    }
+
+
     public static LocationHandler prepareInstance(String name,Context context){
         return LocationHandler.mLocationHandler= LocationHandler.mLocationHandler!=null? LocationHandler.mLocationHandler:  new LocationHandler(name,context);
     }
@@ -52,6 +60,7 @@ public class LocationHandler extends HandlerThread implements LocationCallback,H
 
     @Override
     protected void onLooperPrepared() {
+        Log.d(TAG,"inonPrepared");
         this.mHandler=new Handler(this.getLooper(),this);
         this.mHandler.postDelayed(this.mRunnable, TIMEOUT_DELAY);
     }
@@ -72,5 +81,6 @@ public class LocationHandler extends HandlerThread implements LocationCallback,H
 }
 interface LocationHandlerConstants{
     public static final String TAG="LocationHandler";
-    public static final int TIMEOUT_DELAY=5000;
+
+    public static final int TIMEOUT_DELAY=1000;
 }
