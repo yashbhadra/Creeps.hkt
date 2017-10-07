@@ -15,7 +15,7 @@ public class RSS {
     final String copyright;
     final String pubDate;
 
-    final List<Item> items = new ArrayList<Item>();
+    ArrayList<Item> items = new ArrayList<Item>();
     
 
     public RSS(String title, String link, String description, String language,
