@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/detailed_textview"
+        android:text="bhadrapur fire mishap"
+        android:textSize="30sp"
+        android:textColor="#333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/detailed_description"
+        android:textSize="18sp"
+        android:text="Bhadrapur fire.ZombieApocalypse
+Bhadrapur fire.ZombieApocalypse
+Bhadrapur fire.ZombieApocalypse
+Bhadrapur fire.ZombieApocalypse
+Bhadrapur fire.ZombieApocalypseBhadrapur fire.ZombieApocalypseBhadrapur fire.ZombieApocalypseBhadrapur fire.ZombieApocalyps
+"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id= "@+id/detailed_author"
+        android:layout_width="match_parent"
+        android:text="Yash Bhadrapur"
+        android:textSize="20sp"
+        android:textColor="#555"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/link"
+        android:autoLink="all"
+        android:textSize="18sp"
+        android:text = "http://www.google.com"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

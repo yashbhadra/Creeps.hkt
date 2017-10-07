@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hkthn</string>
+    <string name="API_KEY">AIzaSyCvs8g_XBpK3CJrQm358B3BDBHbX_1Wz84</string>
+    <string name="base_url">192.168.0.156</string>
+</resources>
