@@ -39,7 +39,7 @@ public class RelevanceTester {
 	ArrayList<EntityLocation> relevantItems()
 	{
 		
-		TextRazor client = new TextRazor("10d12e958bf887f94c82d7cd5ab665e6f8edd537bb7813551a50fce7");
+		TextRazor client = new TextRazor("843479adf9dd3bca3d0df79585cfcfc369d0f532795fe5cc87f571f9");
 
 		client.setClassifiers(Arrays.asList("textrazor_newscodes"));//Classify the string using the newscodes
 		client.addExtractor("entities");
@@ -48,15 +48,15 @@ public class RelevanceTester {
 		AnalyzedText response1=null;
 		
 		int size = items.size();
-
-		/*for(int i=0;i<size;i++)
+/*
+		for(int i=0;i<size;i++)
 		{
 			int j=0;
 			try {
-
+				
 				response1 = client.analyze(items.get(i).getTitle());//Paragraph to be analyzed
 
-				
+				synchronized(response1) {
 			
 				for (ScoredCategory category : response1.getResponse().getCategories()) {
 				
@@ -76,11 +76,12 @@ public class RelevanceTester {
 					}
 				}
 			}
+				}
 			catch(Exception e) {}
 			
 			
 		}
-		*/
+*/	
 			try {
 				for(int g=0;g<items.size();g++) {
 					response1 = client.analyze(items.get(g).getTitle());
@@ -96,7 +97,7 @@ public class RelevanceTester {
 							if ((null != latitudeValues && null != longitudeValues)) {
 								System.out.println(entity.getEntityEnglishId());
 								System.out.print(latitudeValues.toString()+longitudeValues.toString());
-								entityLocations.add(new EntityLocation(g,entity.getEntityEnglishId(),latitudeValues.toString(),longitudeValues.toString()));
+								entityLocations.add(new EntityLocation(g,entity.getEntityEnglishId(),latitudeValues.get(0),longitudeValues.get(0),items.get(g)));
 							
 							}
 						}

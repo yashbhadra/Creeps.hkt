@@ -6,14 +6,46 @@ public class EntityLocation {
 	private String lat;
 	private String longitude;
 	private int id;
+	private Item item;
+	
+	public int getId() {
+		return id;
+	}
 
-	EntityLocation(int id,String ID,String lat,String longitude)
-	{
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
+	public Item getItem() {
+		return item;
+	}
+
+
+
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+
+
+
+	public EntityLocation(int id,String ID,String lat,String longitude,Item item) {
+		super();
 		this.ID = ID;
 		this.lat = lat;
 		this.longitude = longitude;
-		this.id=id;
+		this.id = id;
+		this.item = item;
 	}
+
+
 
 
 	public String getID() {
@@ -27,7 +59,7 @@ public class EntityLocation {
 
 
 	public String getLat() {
-		lat = lat.substring(1, lat.length()-1);
+		
 		
 		return lat;
 	}
@@ -39,7 +71,7 @@ public class EntityLocation {
 
 
 	public String getLongitude() {
-		longitude = longitude.substring(1, longitude.length()-1);
+		
 		
 		return longitude;
 	}
