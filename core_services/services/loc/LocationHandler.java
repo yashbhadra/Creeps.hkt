@@ -82,5 +82,5 @@ public class LocationHandler extends HandlerThread implements LocationCallback,H
 interface LocationHandlerConstants{
     public static final String TAG="LocationHandler";
 
-    public static final int TIMEOUT_DELAY=1000;
+    public static final int TIMEOUT_DELAY=1000 ;//* 60 *5;
 }

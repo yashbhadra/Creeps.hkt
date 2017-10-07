@@ -41,7 +41,10 @@ public class LocationService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Log.d(TAG,"connected to the service");
-        LocationHandler.getInstance().start();
+        /* either works ... have to ask about the better one ... */
+        //if(!LocationHandler.getInstance().isAlive())
+        if(LocationHandler.getInstance().getState() == Thread.State.NEW)
+            LocationHandler.getInstance().start();
         return START_STICKY;
     }
     @Override

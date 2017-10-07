@@ -48,12 +48,13 @@ public class AwarenessClient implements AwarenessConstants{
         try {
             Awareness.SnapshotApi.getLocation(this.mGoogleApiClient).setResultCallback(new ResultCallback<LocationResult>() {
                 @Override
-                public void onResult( @NonNull LocationResult locationResult) {
-
-                    Location location=locationResult.getLocation();
-                    Log.d(TAG,"lat "+location.getLatitude()+" longi "+location.getLongitude());
-                    if(locationCallback!=null)
-                        locationCallback.currentLocation(location);
+                public void onResult(  LocationResult locationResult) {
+                    if(locationResult!=null) {
+                        Location location = locationResult.getLocation();
+                        Log.d(TAG, "lat " + location.getLatitude() + " longi " + location.getLongitude());
+                        if (locationCallback != null)
+                            locationCallback.currentLocation(location);
+                    }
 
 
 
@@ -65,7 +66,6 @@ public class AwarenessClient implements AwarenessConstants{
         }catch (Exception e){
             e.printStackTrace();
         }
-
 
     }
 
